@@ -1,0 +1,9 @@
+$(document).ready(function(){
+$("#checkAll").click(function(){
+	  if(this.checked){   
+	  	 $("input[name='checkbox']").each(function(){this.checked=true;});
+	  }else{   
+	  	 $("input[name='checkbox']").each(function(){this.checked=false;});   
+	  }   
+	});
+});

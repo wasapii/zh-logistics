@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="zh-logistics"
+  id="myeclipse.1415943025773"
+  context-root="/zh-logistics"
+  j2ee-spec="6.0"
+  archive="zh-logistics.war">
+  <attributes>
+    <attribute name="webrootdir" value="src/main/webapp" />
+  </attributes>
+</project-module>
+

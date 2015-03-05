@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="accounts" extends="struts-default">
+		<action name="accountsAction" class="com.zh.logistics.action.AccountsAction">
+			<result name="list">/jsp/accounts/accountsList.jsp</result>
+			<result name="update">/jsp/accounts/updateAccounts.jsp</result>
+		</action>
+	</package>
+</struts>

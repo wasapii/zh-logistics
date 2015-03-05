@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="warehouse" extends="struts-default">
+		<action name="warehouseAction" class="com.zh.logistics.action.WarehouseAction">
+			<result name="list">/jsp/warehouse/warehouseList.jsp</result>
+			<result name="update">/jsp/warehouse/updateWarehouse.jsp</result>
+		</action>
+	</package>
+</struts>
