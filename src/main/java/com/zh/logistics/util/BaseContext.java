@@ -10,6 +10,10 @@ public class BaseContext {
 
 	public final static Integer COMPANY_CATEGORY_BUYFROMME = 2;//购买单位
 
+	public final static String DEFAULT_CATEGORY = "000000";//默认类别分类
+	
+	public final static String ASN_NUM_CREATE_HEAD = "ASN00";//进货单单号头内容
+	
 	/**
 	 * 单位类型
 	 * */

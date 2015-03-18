@@ -1,5 +1,6 @@
 package com.zh.logistics.service.impl;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -15,18 +16,19 @@ import com.zh.logistics.util.Page;
  * @author zhanghao
  * 20150303
  * */
-@Service("returnAsnService")
+@Service("asnRmaService")
 public class AsnRmaServiceImpl implements AsnRmaService{
 
 	private InvoiceDao invoiceDao;
 	
 	@Override
-	public Invoice save(Invoice t) {
-		t.setInvoiceType(BaseContext.INVOICE_TYPE_ASN_RMA);
-		t.setInvoiceDate(new Date());
-		t.setInvoiceTime(new Date());
-		t.setWarehouseCode("12414");
-		return invoiceDao.save(t);
+	public Invoice save(Invoice invoice) {
+		invoice.setInvoiceType(BaseContext.INVOICE_TYPE_ASN_RMA);
+		Date date = new Date();
+		invoice.setInvoiceDate(date);
+		invoice.setInvoiceTime(new Timestamp(date.getTime()));
+		invoice.setWarehouseCode("12414");
+		return invoiceDao.save(invoice);
 	}
 
 	@Override
@@ -36,6 +38,7 @@ public class AsnRmaServiceImpl implements AsnRmaService{
 
 	@Override
 	public List<Invoice> query(Invoice t, Page page) {
+		t.setInvoiceType(BaseContext.INVOICE_TYPE_ASN_RMA);
 		return invoiceDao.query(t, page);
 	}
 

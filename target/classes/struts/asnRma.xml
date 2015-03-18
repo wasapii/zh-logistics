@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+
+	<package name="asnRma" extends="struts-default">
+		<action name="asnRmaAction" class="com.zh.logistics.action.AsnRmaAction">
+			<result name="list">/jsp/asnRma/asnRmaList.jsp</result>
+			<result name="update">/jsp/asnRma/updateAsnRma.jsp</result>
+		</action>
+	</package>
+	
+	<package name="asnRmaJson" extends="json-default">
+		<action name="asnRmaJson" class="com.zh.logistics.action.AsnRmaAction">
+		<result type="json">
+			<param name="root">message</param>
+		</result>
+		</action>
+	</package>
+</struts>

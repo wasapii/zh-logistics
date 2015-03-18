@@ -46,6 +46,8 @@ $("#option").click(function(){
 <form id="updateGoods" name="updateGoods" method="post" action="goodsAction!updateGoods.action">
 <input type = "hidden" name="goods.id" value="${goods.id}"/>
 <input type = "hidden" name="goods.goodsCode" value="${goods.goodsCode}"/>
+<input type="hidden" name="goods.category" value="${goods.category}">
+
 <table width="100%" border="0" cellpadding="0" cellspacing="0">
   <tr>
     <td width="17" height="29" valign="top" background="images/mail_leftbg.gif"><img src="images/left-top-right.gif" width="17" height="29" /></td>
@@ -100,7 +102,7 @@ $("#option").click(function(){
                 <td height="30" align="right" class="left_txt2">商品类别：</td>
                 <td>&nbsp;</td>
                 <td>
-                	<select id = "select" name = "goods.category">
+                	<select id = "select" name = "goods.categoryName">
                 		<option id = "option">${goods.categoryName}</option>
                 	</select>
                 </td>

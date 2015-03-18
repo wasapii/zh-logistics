@@ -9,7 +9,7 @@ import com.zh.logistics.entity.Category;
 import com.zh.logistics.entity.Goods;
 import com.zh.logistics.service.CategoryService;
 import com.zh.logistics.service.GoodsService;
-import com.zh.logistics.util.DataFormat;
+import com.zh.logistics.util.FormatDateUtil;
 import com.zh.logistics.util.Page;
 
 /**
@@ -96,7 +96,7 @@ public class GoodsAction extends BaseAction {
 	public String deleteGoods() {
 		try {
 			logger.info("进入了delete方法，Id:" + id);
-			String[] idList = DataFormat.StringFormatArray(id);
+			String[] idList = FormatDateUtil.StringFormatArray(id);
 			for (String delId : idList) {
 				goodsService.delete(Integer.parseInt(delId));
 				logger.info("删除结算账户信息成功,删除ID:" + delId);

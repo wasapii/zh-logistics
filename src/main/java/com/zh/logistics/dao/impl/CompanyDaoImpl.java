@@ -118,4 +118,18 @@ public class CompanyDaoImpl extends BaseHibernateImpl implements CompanyDao {
 		}
 	}
 
+	@Override
+	public Company getByCompanyCode(String companyCode) {
+		return (Company) getSession().createCriteria(Company.class)
+				.add(Restrictions.eq("companyCode", companyCode))
+				.uniqueResult();
+	}
+
+	@Override
+	public String getNameByCompanyCode(String companyCode) {
+		String hql = "select companyName from Company where companyCode = ?";
+		Query query = getSession().createQuery(hql);
+		query.setString(0, companyCode);
+		return (String)query.uniqueResult();
+	}
 }

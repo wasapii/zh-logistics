@@ -16,7 +16,7 @@
 <script type="text/javascript" src="<%=basePath%>js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="<%=basePath %>layer/layer.min.js"></script>
 <script type="text/javascript" src="<%=basePath %>js/ui.js"></script>
-<script type="text/javascript" src="<%=basePath %>js/asnList.js"></script>
+<script type="text/javascript" src="<%=basePath %>js/asnRmaList.js"></script>
 <script type="text/javascript" src="<%=basePath %>My97DatePicker/WdatePicker.js"></script>
 
 </head>
@@ -31,7 +31,7 @@
 				</td>
 				<td width="100%" height="29" valign="top"
 					background="<%=basePath%>images/content-bg.gif">
-					<div class="titlebt">进货单列表</div></td>
+					<div class="titlebt">退货单列表</div></td>
 				<td width="16" valign="top"
 					background="<%=basePath%>images/mail_rightbg.gif"><img
 					src="<%=basePath%>images/nav-right-bg.gif" width="16" height="29" />
@@ -41,7 +41,7 @@
 	</div>
 	<div id="context" style="background-color:#EEF2FB;height: 100%">
 		<DIV style="height: 400px">
-		<form action="asnAction!query.action?page.localPage=1"
+		<form action="asnRmaAction!queryAsnRma.action?page.localPage=1"
 			method="post">
 			<table>
 				<tr>
@@ -61,9 +61,9 @@
 				</tr>
 			</table>
 		</form>
-		<button  id = "updateAsn" name = "updateAsn">修改</button>
+		<button  id = "updateAsnRma" name = "updateAsnRma">修改</button>
 		<button  id = "delete" name = "delete">删除</button>
-		<a href="<%=basePath %>jsp/asn/addAsn.jsp">新增</a>
+		<a href="<%=basePath %>jsp/asnRma/addAsnRma.jsp">新增</a>
 		<table id="tablelist" style="width:1600px;"cellspacing="0" cellpadding="0" >
 			<tr bgcolor="#FFFFFF">
 				<td width="15px"><input type="checkbox" id = "checkAll" value="0"/></td>
@@ -94,18 +94,18 @@
 				<a class="page">首页&nbsp上一页&nbsp下一页&nbsp最末页</a>
 			</s:if>
 			<s:else>
-				<a href="asnAction!query.action?page.localPage=1&invoice.startDate=${invoice.startDate}&invoice.endDate=${invoice.endDate}">首页</a>&nbsp
+				<a href="asnRmaAction!queryAsnRma.action?page.localPage=1&invoice.startDate=${invoice.startDate}&invoice.endDate=${invoice.endDate}">首页</a>&nbsp
 		  		<s:if test="page.localPage < page.totalPage&&page.localPage == 1">
-		  			上一页&nbsp<a href="asnAction!query.action?page.localPage=${page.localPage + 1}&invoice.startDate=${invoice.startDate}&invoice.endDate=${invoice.endDate}">下一页</a>&nbsp
+		  			上一页&nbsp<a href="asnRmaAction!queryAsnRma.action?page.localPage=${page.localPage + 1}&invoice.startDate=${invoice.startDate}&invoice.endDate=${invoice.endDate}">下一页</a>&nbsp
 		    	</s:if>
 				<s:elseif test="page.localPage == page.totalPage">
-					<a href="asnAction!query.action?page.localPage=${page.localPage - 1}&invoice.startDate=${invoice.startDate}&invoice.endDate=${invoice.endDate}">上一页</a>&nbsp下一页&nbsp
+					<a href="asnRmaAction!queryAsnRma.action?page.localPage=${page.localPage - 1}&invoice.startDate=${invoice.startDate}&invoice.endDate=${invoice.endDate}">上一页</a>&nbsp下一页&nbsp
 		    	</s:elseif>
 		    	<s:else>
-		    		<a href="asnAction!query.action?page.localPage=${page.localPage - 1}&invoice.startDate=${invoice.startDate}&invoice.endDate=${invoice.endDate}">上一页</a>&nbsp
-		    		<a href="asnAction!query.action?page.localPage=${page.localPage + 1}&invoice.startDate=${invoice.startDate}&invoice.endDate=${invoice.endDate}">下一页</a>&nbsp
+		    		<a href="asnRmaAction!queryAsnRma.action?page.localPage=${page.localPage - 1}&invoice.startDate=${invoice.startDate}&invoice.endDate=${invoice.endDate}">上一页</a>&nbsp
+		    		<a href="asnRmaAction!queryAsnRma.action?page.localPage=${page.localPage + 1}&invoice.startDate=${invoice.startDate}&invoice.endDate=${invoice.endDate}">下一页</a>&nbsp
 		    	</s:else>
-				<a href="asnAction!query.action?page.localPage=${page.totalPage}&invoice.startDate=${invoice.startDate}&invoice.endDate=${invoice.endDate}">最末页</a>
+				<a href="asnRmaAction!queryAsnRma.action?page.localPage=${page.totalPage}&invoice.startDate=${invoice.startDate}&invoice.endDate=${invoice.endDate}">最末页</a>
 			</s:else>
 			<a>共有${page.total}条记录，共${page.totalPage}页,当前页为第${page.localPage}页</a>
 		</div>

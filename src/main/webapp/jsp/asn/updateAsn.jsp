@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <td width="20%" height="30" align="left" bgcolor="#f2f2f2" class="left_txt2">进货单详情设置：</td>
               </tr>
 			  <tr>
-				<td width="15px"><input type="checkbox" id = "checkAll" value="0"/></td>
+				<!-- <td width="15px"><input type="checkbox" id = "checkAll" value="0"/></td> -->
                 <td height="30" align="left" bgcolor="#f2f2f2" class="left_txt2">商品编号</td>
  				<td height="30" align="left" bgcolor="#f2f2f2" class="left_txt2">商品名称</td>
                 <td height="30" align="left" bgcolor="#f2f2f2" class="left_txt2">数量</td>
@@ -106,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			  <s:iterator value="invoice.invoiceDetails" id="inv" status="L">
 			  <input type="hidden" name = "invoice.invoiceDetails[${L.index}].id" value="${inv.id}"/>
 			  <tr>
-				<td><input type="checkbox" name= "checkbox" value="${inv.id}"/></td>
+<%--			<td><input type="checkbox" name= "checkbox" value="${inv.id}"/></td>--%>
                 <td height="30" align="left" bgcolor="#f2f2f2" class="left_txt2">
 					<input type="text" name = "invoice.invoiceDetails[${L.index}].goodsCode" value="${inv.goodsCode}"/>
 				</td>

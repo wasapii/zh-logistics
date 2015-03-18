@@ -11,7 +11,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <head>
 <base href="<%=basePath%>">
 
-<title>进货单新增界面</title>
+<title>退货单修改界面</title>
 <link href="images/skin.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript" src="<%=basePath%>js/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="<%=basePath %>js/asnList.js"></script>
@@ -32,7 +32,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tr>
     <td height="71" valign="middle" background="images/mail_leftbg.gif">&nbsp;</td>
     <td valign="top" bgcolor="#F7F8F9">
-	<form name="updateAsn" method="post" action="asnAction!updateAsn.action">
+	<form name="updateAsnRma" method="post" action="asnRmaAction!updateAsnRma.action">
 	<input type="hidden" name="invoice.id" value="${invoice.id}">
 	<input type="hidden" name="invoice.invoiceDate" value="${invoice.invoiceDate}">
 	<input type="hidden" name="invoice.invoiceTime" value="${invoice.invoiceTime}">
@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <td valign="top">
         <table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="left_txt">当前位置：进货单新增</td>
+            <td class="left_txt">当前位置：退货单修改</td>
           </tr>
           <tr>
             <td height="20"><table width="100%" height="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <tr>
             <td><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="nowtable">
               <tr>
-                <td class="left_bt2">&nbsp;&nbsp;&nbsp;&nbsp;进货单设置</td>
+                <td class="left_bt2">&nbsp;&nbsp;&nbsp;&nbsp;退货单设置</td>
               </tr>
             </table></td>
           </tr>

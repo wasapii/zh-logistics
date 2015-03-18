@@ -10,4 +10,5 @@ import com.zh.logistics.entity.Company;
  * */
 public interface CompanyService extends BaseService<Company>{
 
+	public String getNameByCompanyCode(String companyCode);
 }

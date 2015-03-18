@@ -21,7 +21,6 @@ public class Warehouse implements Serializable {
 	private String tel;
 	private String memo;
 
-
 	@Id
 	@GeneratedValue
 	@Column(name = "id" , nullable = false,unique = true)

@@ -33,4 +33,5 @@
 	<include file="struts/goods.xml"></include>
 	<include file="struts/category.xml"></include>
 	<include file="struts/asn.xml"></include>
+	<include file="struts/asnRma.xml"></include>
 </struts>

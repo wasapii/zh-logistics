@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 
 import com.zh.logistics.entity.Company;
 import com.zh.logistics.service.CompanyService;
-import com.zh.logistics.util.DataFormat;
+import com.zh.logistics.util.FormatDateUtil;
 import com.zh.logistics.util.Page;
 
 /**
@@ -86,7 +86,7 @@ public class CompanyAction extends BaseAction {
 	public String deleteCompany() {
 		try {
 			logger.info("进入了delete方法，Id:" + id);
-			String[] idList = DataFormat.StringFormatArray(id);
+			String[] idList = FormatDateUtil.StringFormatArray(id);
 			for (String delId : idList) {
 				companyService.delete(Integer.parseInt(delId));
 				logger.info("删除结算账户信息成功,删除ID:" + delId);

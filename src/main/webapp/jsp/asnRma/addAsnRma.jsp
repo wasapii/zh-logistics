@@ -48,7 +48,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <tr>
     <td height="71" valign="middle" background="images/mail_leftbg.gif">&nbsp;</td>
     <td valign="top" bgcolor="#F7F8F9">
-	<form id="addAsn" name="addAsn" method="post" action="asnAction!addAsn.action">
+	<form id="addAsnRma" name="addAsnRma" method="post" action="asnRmaAction!addAsnRma.action">
     <table width="100%" height="138" border="0" cellpadding="0" cellspacing="0">
       <tr>
         <td height="13" valign="top" >&nbsp;</td>
@@ -56,7 +56,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
       <tr>
         <td valign="top"><table width="98%" border="0" align="center" cellpadding="0" cellspacing="0">
           <tr>
-            <td class="left_txt">当前位置：进货单新增</td>
+            <td class="left_txt">当前位置：退货单新增</td>
           </tr>
           <tr>
             <td height="20"><table width="100%" height="1" border="0" cellpadding="0" cellspacing="0" bgcolor="#CCCCCC">
@@ -71,7 +71,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
           <tr>
             <td><table width="100%" height="31" border="0" cellpadding="0" cellspacing="0" class="nowtable">
               <tr>
-                <td class="left_bt2">&nbsp;&nbsp;&nbsp;&nbsp;进货单设置</td>
+                <td class="left_bt2">&nbsp;&nbsp;&nbsp;&nbsp;退货单设置</td>
               </tr>
             </table></td>
           </tr>

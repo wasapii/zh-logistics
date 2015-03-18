@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import com.zh.logistics.base.BaseHibernateImpl;
 import com.zh.logistics.dao.InvoiceDao;
 import com.zh.logistics.entity.Invoice;
-import com.zh.logistics.util.DataFormat;
+import com.zh.logistics.util.FormatDateUtil;
 import com.zh.logistics.util.Page;
 
 /**
@@ -75,9 +75,9 @@ public class InvoiceDaoImpl extends BaseHibernateImpl implements InvoiceDao {
 					&& invoice.getEndDate() != null
 					&& !"".equals(invoice.getEndDate())) {
 				try {
-					criteria.add(Restrictions.between("invoiceDate", DataFormat
+					criteria.add(Restrictions.between("invoiceDate", FormatDateUtil
 							.formatStringToDate(invoice.getStartDate()),
-							DataFormat.formatStringToDate(invoice.getEndDate())));
+							FormatDateUtil.formatStringToDate(invoice.getEndDate())));
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
@@ -124,9 +124,9 @@ public class InvoiceDaoImpl extends BaseHibernateImpl implements InvoiceDao {
 					&& invoice.getEndDate() != null
 					&& !"".equals(invoice.getEndDate())) {
 				try {
-					criteria.add(Restrictions.between("invoiceDate", DataFormat
+					criteria.add(Restrictions.between("invoiceDate", FormatDateUtil
 							.formatStringToDate(invoice.getStartDate()),
-							DataFormat.formatStringToDate(invoice.getEndDate())));
+							FormatDateUtil.formatStringToDate(invoice.getEndDate())));
 				} catch (ParseException e) {
 					e.printStackTrace();
 				}
@@ -145,6 +145,19 @@ public class InvoiceDaoImpl extends BaseHibernateImpl implements InvoiceDao {
 			return criteria.list().size();
 		} catch (RuntimeException re) {
 			logger.error("get failed", re);
+			throw re;
+		}
+	}
+
+	@Override
+	public String getMaxInvoiceNum() {
+		try {
+			String hql = "select max(invoiceNum) from Invoice where invoiceNum like 'ASN%'";
+			Query query = getSession().createQuery(hql);
+			logger.debug("delete successful");
+			return (String) query.uniqueResult();
+		} catch (RuntimeException re) {
+			logger.error("update fail", re);
 			throw re;
 		}
 	}

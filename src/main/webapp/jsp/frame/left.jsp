@@ -59,10 +59,9 @@ body {
         </table>
         <ul class="MM">
           <li><a href="<%=basePath%>jsp/asn/asnList.jsp" target="main">进货单</a></li>
-          <li><a href="<%=basePath%>jsp/asnRma/asnRmaList.jsp" target="main">进货退货单</a></li>
           <li><a href="http://www.mycodes.net" target="main">零售单</a></li>
-          <li><a href="http://www.mycodes.net" target="main">进货单</a></li>
-          <li><a target="main" href="http://www.mycodes.net">销售退货单</a></li>
+          <li><a href="http://www.mycodes.net" target="main">销售单</a></li>
+          <li><a href="<%=basePath%>jsp/asnRma/asnRmaList.jsp" target="main">退货单</a></li>
           <li><a href="http://www.mycodes.net" target="main">收款单</a></li>
           <li><a href="http://www.mycodes.net" target="main">付款单</a></li>
         </ul>

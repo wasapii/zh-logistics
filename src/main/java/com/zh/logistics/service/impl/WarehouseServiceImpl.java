@@ -52,4 +52,14 @@ public class WarehouseServiceImpl implements WarehouseService{
 		return warehouseDao.getById(id);
 	}
 
+	@Override
+	public Warehouse getByWarehouseCode(String warehouseCode) {
+		return warehouseDao.getByWarehouseCode(warehouseCode);
+	}
+
+	@Override
+	public String getNameByWarehouseCode(String warehouseCode) {
+		return warehouseDao.getNameByWarehouseCode(warehouseCode);
+	}
+
 }

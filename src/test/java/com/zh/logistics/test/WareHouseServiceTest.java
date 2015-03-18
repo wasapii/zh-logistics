@@ -66,4 +66,10 @@ public class WareHouseServiceTest {
 	public void delete(){
 		warehouseService.delete(46);
 	}
+	
+	@Test
+	public void tesGetWarehouse(){
+		Warehouse warehouse =  warehouseService.getByWarehouseCode("ffg");
+		System.out.println(warehouse);
+	}
 }

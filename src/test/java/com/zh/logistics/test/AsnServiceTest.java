@@ -18,7 +18,7 @@ import com.zh.logistics.service.AsnService;
 import com.zh.logistics.service.UserService;
 import com.zh.logistics.service.WarehouseService;
 import com.zh.logistics.util.BaseContext;
-import com.zh.logistics.util.DataFormat;
+import com.zh.logistics.util.FormatDateUtil;
 
 public class AsnServiceTest {
 
@@ -33,10 +33,7 @@ public class AsnServiceTest {
 
 	@Test
 	public void getAsn(){
-		
-		Invoice invoice = new Invoice();
-		int i = asnService.getAllcount(invoice);
-		System.out.println("==========="+i);
+		System.out.println(asnService.getMax());
 //		System.out.println("==========="+invoice.getInvoiceDate());
 //		System.err.println("==========="+invoice.getInvoiceFormatDate());
 //		System.out.println("==========="+DataFormat.formatDateToString(invoice.getInvoiceDate()));

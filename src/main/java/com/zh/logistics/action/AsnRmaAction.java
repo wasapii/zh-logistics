@@ -12,29 +12,22 @@ import org.apache.log4j.Logger;
 import com.zh.logistics.entity.Invoice;
 import com.zh.logistics.entity.InvoiceDetails;
 import com.zh.logistics.service.AsnRmaService;
-import com.zh.logistics.service.AsnService;
-import com.zh.logistics.service.CompanyService;
-import com.zh.logistics.service.WarehouseService;
 import com.zh.logistics.util.FormatDateUtil;
 import com.zh.logistics.util.Page;
 
 /**
- * 进货单action
+ * 退货单action(包括销售退货、进货退货)
  * 
- * @author zhanghao 20150209
+ * @author zhanghao 20150316
  * 
  * */
-public class AsnAction extends BaseAction {
+public class AsnRmaAction extends BaseAction {
 
 	private static final long serialVersionUID = 1L;
 
-	private static Logger logger = Logger.getLogger(AsnAction.class);
+	private static Logger logger = Logger.getLogger(AsnRmaAction.class);
 
-	private AsnService asnService;
-	
-	private WarehouseService warehouseService;
-	
-	private CompanyService companyService;
+	private AsnRmaService asnRmaService;
 	
 	private Invoice invoice;
 
@@ -42,18 +35,12 @@ public class AsnAction extends BaseAction {
 	
 	List<InvoiceDetails> invoiceDetails = new ArrayList<InvoiceDetails>();
 	
-	public String queryAsn() {
+	public String queryAsnRma() {
 		try {
-			int total = asnService.getAllcount(invoice);
+			int total = asnRmaService.getAllcount(invoice);
 			page.setTotal(total);
 			page.setTotalPage(Page.caluTotalPage(total, page.getPageSize()));
-			invoiceList = asnService.query(invoice, page);
-			for (Invoice invoice : invoiceList) {
-				String warehoueName = warehouseService.getNameByWarehouseCode(invoice.getWarehouseCode());
-				invoice.setWarehouseName(warehoueName);
-				String companyName = companyService.getNameByCompanyCode(invoice.getCompany());
-				invoice.setCompanyName(companyName);
-			}
+			invoiceList = asnRmaService.query(invoice, page);
 			message = "success";
 			logger.info("查询成功" + invoiceList);
 			return "list";
@@ -64,15 +51,15 @@ public class AsnAction extends BaseAction {
 
 	}
 
-	public String queryAsnAll() {
+	public String queryAsnRmaAll() {
 		try {
 			invoice = new Invoice();
-			int total = asnService.getAllcount(invoice);
+			int total = asnRmaService.getAllcount(invoice);
 			page = new Page();
 			page.setTotal(total);
 			page.setLocalPage(1);
 			page.setTotalPage(Page.caluTotalPage(total, page.getPageSize()));
-			invoiceList = asnService.query(invoice, page);
+			invoiceList = asnRmaService.query(invoice, page);
 			message = "success";
 			logger.info("查询成功" + invoiceList);
 			return "list";
@@ -83,7 +70,7 @@ public class AsnAction extends BaseAction {
 
 	}
 
-	public String updateAsn() {
+	public String updateAsnRma() {
 		try {
 			List<InvoiceDetails> DetailsList = invoice.getInvoiceDetails();
 			for (InvoiceDetails invoiceDetail : DetailsList) {
@@ -91,8 +78,8 @@ public class AsnAction extends BaseAction {
 				invoiceDetails.add(invoiceDetail);
 			}
 			invoice.setInvoiceDetails(invoiceDetails);
-			asnService.update(invoice);
-			return queryAsnAll();
+			asnRmaService.update(invoice);
+			return queryAsnRmaAll();
 		} catch (RuntimeException re) {
 			logger.error("更新失败", re);
 			throw re;    
@@ -100,7 +87,7 @@ public class AsnAction extends BaseAction {
 
 	}
 	                                                                                                                            
-	public String addAsn() {
+	public String addAsnRma() {
 		try {
 			List<InvoiceDetails> DetailsList = invoice.getInvoiceDetails();
 			for (InvoiceDetails invoiceDetail : DetailsList) {
@@ -108,33 +95,33 @@ public class AsnAction extends BaseAction {
 				invoiceDetails.add(invoiceDetail);
 			}
 			invoice.setInvoiceDetails(invoiceDetails);
-			asnService.save(invoice);
-			return queryAsnAll();
+			asnRmaService.save(invoice);
+			return queryAsnRmaAll();
 		} catch (RuntimeException re) {
 			logger.error("新增失败", re);
 			throw re;
 		}
 	}
 
-	public String deleteAsn() {
+	public String deleteAsnRma() {
 		try {
 			logger.info("进入了delete方法，Id:" + id);
 			String[] idList = FormatDateUtil.StringFormatArray(id);
 			for (String delId : idList) {
-				asnService.delete(Integer.parseInt(delId));
+				asnRmaService.delete(Integer.parseInt(delId));
 				logger.info("删除结算账户信息成功,删除ID:" + delId);
 			}
-			return queryAsnAll();
+			return queryAsnRmaAll();
 		} catch (RuntimeException re) {
 			logger.error("删除失败", re);
 			throw re;
 		}
 	}
 
-	public String toUpdateAsn() {
+	public String toUpdateAsnRma() {
 		try {
 			logger.info("获取到的进货单ID信息为：" + invoice.getId());
-			invoice = asnService.getById(invoice.getId());
+			invoice = asnRmaService.getById(invoice.getId());
 			logger.info("查询ID为：" + invoice.getId() + "的仓库信息为：" + invoice);
 			return "update";
 		} catch (RuntimeException re) {
@@ -146,7 +133,7 @@ public class AsnAction extends BaseAction {
 	public String queryDetail(){
 		try {
 			logger.info("获取到的进货单ID信息为：" + id);
-			invoice = asnService.getById(Integer.parseInt(id));
+			invoice = asnRmaService.getById(Integer.parseInt(id));
 			List<InvoiceDetails> details = invoice.getInvoiceDetails();
 			JsonConfig jsonConfig = new JsonConfig();
 			jsonConfig.setIgnoreDefaultExcludes(false);
@@ -161,12 +148,13 @@ public class AsnAction extends BaseAction {
 	} 
 
 	
-	public AsnService getAsnService() {
-		return asnService;
+
+	public AsnRmaService getAsnRmaService() {
+		return asnRmaService;
 	}
 
-	public void setAsnService(AsnService asnService) {
-		this.asnService = asnService;
+	public void setAsnRmaService(AsnRmaService asnRmaService) {
+		this.asnRmaService = asnRmaService;
 	}
 
 	public Invoice getInvoice() {
@@ -191,22 +179,6 @@ public class AsnAction extends BaseAction {
 
 	public void setInvoiceDetails(List<InvoiceDetails> invoiceDetails) {
 		this.invoiceDetails = invoiceDetails;
-	}
-
-	public WarehouseService getWarehouseService() {
-		return warehouseService;
-	}
-
-	public void setWarehouseService(WarehouseService warehouseService) {
-		this.warehouseService = warehouseService;
-	}
-
-	public CompanyService getCompanyService() {
-		return companyService;
-	}
-
-	public void setCompanyService(CompanyService companyService) {
-		this.companyService = companyService;
 	}
 
 }

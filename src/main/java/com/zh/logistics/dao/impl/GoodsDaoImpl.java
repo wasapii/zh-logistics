@@ -68,13 +68,16 @@ public class GoodsDaoImpl extends BaseHibernateImpl implements GoodsDao {
 	public List<Goods> query(Goods goods, Page page) {
 		try {
 			Criteria criteria = getSession().createCriteria(Goods.class);
-			if (goods != null && goods.getCategory() != null && !"".equals(goods.getCategory() )) {
-				criteria.add(Restrictions.eq("category", goods.getCategory() ));
+			if (goods != null && goods.getCategory() != null
+					&& !"".equals(goods.getCategory())) {
+				criteria.add(Restrictions.eq("category", goods.getCategory()));
 			}
-			if (goods != null && goods.getGoodsCode() != null && !"".equals(goods.getGoodsCode())) {
-				criteria.add(Restrictions.eq("goodsCode",goods.getGoodsCode()));
+			if (goods != null && goods.getGoodsCode() != null
+					&& !"".equals(goods.getGoodsCode())) {
+				criteria.add(Restrictions.eq("goodsCode", goods.getGoodsCode()));
 			}
-			if (goods != null && goods.getGoodsName() != null && !"".equals(goods.getGoodsName())) {
+			if (goods != null && goods.getGoodsName() != null
+					&& !"".equals(goods.getGoodsName())) {
 				criteria.add(Restrictions.eq("goodsName", goods.getGoodsName()));
 			}
 			List<Goods> list = criteria.addOrder(Order.desc("id"))
@@ -103,16 +106,31 @@ public class GoodsDaoImpl extends BaseHibernateImpl implements GoodsDao {
 	public int getAllcount(Goods goods) {
 		try {
 			Criteria criteria = getSession().createCriteria(Goods.class);
-			if (goods != null && goods.getCategory() != null && !"".equals(goods.getCategory() )) {
-				criteria.add(Restrictions.eq("category", goods.getCategory() ));
+			if (goods != null && goods.getCategory() != null
+					&& !"".equals(goods.getCategory())) {
+				criteria.add(Restrictions.eq("category", goods.getCategory()));
 			}
-			if (goods != null && goods.getGoodsCode() != null && !"".equals(goods.getGoodsCode())) {
-				criteria.add(Restrictions.eq("goodsCode",goods.getGoodsCode()));
+			if (goods != null && goods.getGoodsCode() != null
+					&& !"".equals(goods.getGoodsCode())) {
+				criteria.add(Restrictions.eq("goodsCode", goods.getGoodsCode()));
 			}
-			if (goods != null && goods.getGoodsName() != null && !"".equals(goods.getGoodsName())) {
+			if (goods != null && goods.getGoodsName() != null
+					&& !"".equals(goods.getGoodsName())) {
 				criteria.add(Restrictions.eq("goodsName", goods.getGoodsName()));
 			}
 			return criteria.list().size();
+		} catch (RuntimeException re) {
+			logger.error("get failed", re);
+			throw re;
+		}
+	}
+
+	@Override
+	public Goods getByGoodsCode(String goodsCode) {
+		try {
+			return (Goods) getSession().createCriteria(Goods.class)
+					.add(Restrictions.eq("goodsCode", goodsCode))
+					.uniqueResult();
 		} catch (RuntimeException re) {
 			logger.error("get failed", re);
 			throw re;

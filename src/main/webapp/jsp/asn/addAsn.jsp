@@ -79,27 +79,27 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <td>
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
               <tr>
-                <td width="20%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">单位名称：</td>
+                <td width="20%" height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">供货单位：</td>
                 <td width="3%" bgcolor="#f2f2f2">&nbsp;</td>
                 <td width="32%" height="30" bgcolor="#f2f2f2"><input name="invoice.company" type="text" size="30" /></td>
               </tr>
               <tr>
-                <td height="30" align="right" class="left_txt2">职员名称：</td>
+                <td height="30" align="right" class="left_txt2">仓库编号：</td>
                 <td>&nbsp;</td>
-                <td height="30"><input type="text" name="invoice.operator" size="30" /></td>
+                <td height="30"><input type="text" name="invoice.warehouseCode" size="30" /></td>
               </tr>
-              <tr>
+              <!-- <tr>
                 <td height="30" align="right" bgcolor="#f2f2f2" class="left_txt2">单据编号：</td>
                 <td bgcolor="#f2f2f2">&nbsp;</td>
                 <td height="30" bgcolor="#f2f2f2"><input type="text" name="invoice.invoiceNum" size="30" /></td>
-              </tr>
+              </tr> -->
               <tr>
-                <td height="17" colspan="4" align="right" >&nbsp;</td>
+                <td height="17" colspan="4" align="right" bgcolor="#f2f2f2">&nbsp;</td>
               </tr>              
             </table></td>
           </tr>
           <tr>
-            <td width="20%" height="30" align="left" bgcolor="#f2f2f2" class="left_txt2">进货单详情设置：</td>
+            <td width="20%" height="30" align="left" class="left_txt2">进货单详情设置：</td>
           </tr>
           <tr><td>
           	<table id = "addTableDeail" width="100%" border="0" cellspacing="0" cellpadding="0">

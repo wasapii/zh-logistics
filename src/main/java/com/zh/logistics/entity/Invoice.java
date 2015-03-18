@@ -17,7 +17,7 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 
 import com.zh.logistics.util.BaseContext;
-import com.zh.logistics.util.DataFormat;
+import com.zh.logistics.util.FormatDateUtil;
 
 /**
  * 进货单
@@ -33,13 +33,15 @@ public class Invoice implements Serializable {
 	private String invoiceNum;
 	private String superiorsOrderNum;
 	private Date invoiceDate;
-	private Date invoiceTime;
+	private Timestamp invoiceTime;
 	private Integer invoiceType;
 	private String company;
+	private String companyName;
 	private Double paidAmount;
 	private Double wipeZeroAmount;
 	private String operator;
 	private String warehouseCode;
+	private String warehouseName;
 	private String memo;
 	private String payee;
 	private Double paymentAmount;
@@ -87,11 +89,11 @@ public class Invoice implements Serializable {
 	}
 
 	@Column(name = "invoice_time", nullable = false, length = 19)
-	public Date getInvoiceTime() {
+	public Timestamp getInvoiceTime() {
 		return this.invoiceTime;
 	}
 
-	public void setInvoiceTime(Date invoiceTime) {
+	public void setInvoiceTime(Timestamp invoiceTime) {
 		this.invoiceTime = invoiceTime;
 	}
 
@@ -219,13 +221,31 @@ public class Invoice implements Serializable {
 
 	@Transient
 	public String getInvoiceFormatDate() {
-		return DataFormat.formatDateToString(invoiceDate);
+		return FormatDateUtil.formatDateToString(invoiceDate);
 	}
 	@Transient
 	public String getInvoiceFormatTime() {
-		return DataFormat.formatTimeToString(invoiceTime);
+		return FormatDateUtil.formatTimeToString(invoiceTime);
 	}
 	
+	@Transient
+	public String getWarehouseName() {
+		return warehouseName;
+	}
+
+	public void setWarehouseName(String warehouseName) {
+		this.warehouseName = warehouseName;
+	}
+
+	@Transient
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
 	@Transient
 	public String getInvoiceTypeName(){
 		switch (invoiceType) {

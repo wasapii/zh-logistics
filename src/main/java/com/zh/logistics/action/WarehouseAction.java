@@ -4,7 +4,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 import com.zh.logistics.entity.Warehouse;
 import com.zh.logistics.service.WarehouseService;
-import com.zh.logistics.util.DataFormat;
+import com.zh.logistics.util.FormatDateUtil;
 import com.zh.logistics.util.Page;
 
 public class WarehouseAction extends BaseAction {
@@ -68,7 +68,7 @@ public class WarehouseAction extends BaseAction {
 
 	public String delete(){
 		logger.info("进入了delete方法，Id:" + id);
-		String[] idList = DataFormat.StringFormatArray(id);
+		String[] idList = FormatDateUtil.StringFormatArray(id);
 		for (String delId : idList) {
 			warehouseService.delete(Integer.parseInt(delId));
 			logger.info("删除仓库信息成功,删除ID:" + delId);

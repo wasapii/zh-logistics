@@ -1,12 +1,11 @@
 package com.zh.logistics.util;
 
-import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-public class DataFormat {
+public class FormatDateUtil {
 
 	/**
 	 * 含有空格的字符串拆分并转换成数组
@@ -22,6 +21,15 @@ public class DataFormat {
 	 * */
 	public static String  formatDateToString(Date date){
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+		return format.format(date);
+	}
+	
+	/**
+	 * 日期格式转换
+	 * return string yyyyMMDD
+	 * */
+	public static String formatDateToString2(Date date){
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		return format.format(date);
 	}
 	
@@ -45,7 +53,7 @@ public class DataFormat {
 	}
 	
 	public static void main(String[] args) throws ParseException {
-		System.err.println("========="+DataFormat.formatStringToDate("2015-02-05"));
+		System.err.println("========="+FormatDateUtil.formatStringToDate("2015-02-05"));
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 		Date date = new Date();
 		System.out.println(date);

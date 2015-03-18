@@ -51,5 +51,10 @@ public class CompanyServiceImpl implements CompanyService{
 	public void setCompanyDao(CompanyDao companyDao) {
 		this.companyDao = companyDao;
 	}
+
+	@Override
+	public String getNameByCompanyCode(String companyCode) {
+		return companyDao.getNameByCompanyCode(companyCode);
+	}
 	
 }

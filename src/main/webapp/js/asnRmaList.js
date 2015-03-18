@@ -1,6 +1,6 @@
 function showDetail(note){
 	var id = note.id;
-	$.post("asnJson!queryDetail.action",{id:id},function(data){
+	$.post("asnRmaJson!queryDetail.action",{id:id},function(data){
 		var invoiceDetails = eval("(" + data + ")");
 			var trs = $("#tableDetail").find("tr");
 			for(var i = 0;i<=trs.length-1;i++ ){
@@ -36,13 +36,13 @@ $(document).ready(function(){
 		if (length == 0) {
 			alert("请选择一条记录");
 		} else {
-			$.post("asnAction!deleteAsn.action",{id:id},function(){
-				location.href = "asnAction!queryAsnAll.action";
+			$.post("asnRmaAction!deleteAsnRma.action",{id:id},function(){
+				location.href = "asnRmaAction!queryAsnRmaAll.action";
 			});
 		}
 	});
 	//修改
-	$("#updateAsn").click(function(){
+	$("#updateAsnRma").click(function(){
 		var checkbox = $("input[name=checkbox]:checked");
 		var checkNum = checkbox.val();
 		var checkboxLength = checkbox.length;
@@ -52,7 +52,7 @@ $(document).ready(function(){
 			alert("请勿选择多条数据");
 		}else{
 			$.post("",function(){
-				location.href = "asnAction!toUpdateAsn.action?invoice.id="+checkNum;
+				location.href = "asnRmaAction!toUpdateAsnRma.action?invoice.id="+checkNum;
 			}); 
 		}
 	});

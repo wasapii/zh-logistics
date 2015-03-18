@@ -15,38 +15,47 @@ import com.zh.logistics.entity.Warehouse;
 import com.zh.logistics.util.Page;
 
 @Repository("warehouseDao")
-public class WarehouseDaoImpl extends BaseHibernateImpl implements WarehouseDao{
-	
+public class WarehouseDaoImpl extends BaseHibernateImpl implements WarehouseDao {
+
 	public static Logger logger = Logger.getLogger(WarehouseDaoImpl.class);
-	
+
 	@Override
 	public Warehouse save(Warehouse warehouse) {
 		getSession().save(warehouse);
 		return warehouse;
 	}
 
-
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Warehouse> query(Warehouse warehouse, Page page) {
 		Criteria criteria = getSession().createCriteria(Warehouse.class);
-		if (warehouse != null && warehouse.getWarehouseCode() != null && !"".equals(warehouse.getWarehouseCode())) {
-			criteria.add(Restrictions.eq("warehouseCode", warehouse.getWarehouseCode()));
+		if (warehouse != null && warehouse.getWarehouseCode() != null
+				&& !"".equals(warehouse.getWarehouseCode())) {
+			criteria.add(Restrictions.eq("warehouseCode",
+					warehouse.getWarehouseCode()));
 		}
-		if (warehouse != null && warehouse.getWarehouseName() != null && !"".equals(warehouse.getWarehouseName())) {
-			criteria.add(Restrictions.eq("warehouseName", warehouse.getWarehouseName()));
+		if (warehouse != null && warehouse.getWarehouseName() != null
+				&& !"".equals(warehouse.getWarehouseName())) {
+			criteria.add(Restrictions.eq("warehouseName",
+					warehouse.getWarehouseName()));
 		}
-		return criteria.addOrder(Order.desc("id")).setFirstResult(Page.getStartNO(page)).setMaxResults(page.getPageSize()).list();
+		return criteria.addOrder(Order.desc("id"))
+				.setFirstResult(Page.getStartNO(page))
+				.setMaxResults(page.getPageSize()).list();
 	}
 
 	@Override
 	public int getAllcount(Warehouse warehouse) {
 		Criteria criteria = getSession().createCriteria(Warehouse.class);
-		if (warehouse != null && warehouse.getWarehouseCode() != null && !"".equals(warehouse.getWarehouseCode())) {
-			criteria.add(Restrictions.eq("warehouseCode", warehouse.getWarehouseCode()));
+		if (warehouse != null && warehouse.getWarehouseCode() != null
+				&& !"".equals(warehouse.getWarehouseCode())) {
+			criteria.add(Restrictions.eq("warehouseCode",
+					warehouse.getWarehouseCode()));
 		}
-		if (warehouse != null && warehouse.getWarehouseName() != null && !"".equals(warehouse.getWarehouseName())) {
-			criteria.add(Restrictions.eq("warehouseName", warehouse.getWarehouseName()));
+		if (warehouse != null && warehouse.getWarehouseName() != null
+				&& !"".equals(warehouse.getWarehouseName())) {
+			criteria.add(Restrictions.eq("warehouseName",
+					warehouse.getWarehouseName()));
 		}
 		return criteria.list().size();
 	}
@@ -61,12 +70,26 @@ public class WarehouseDaoImpl extends BaseHibernateImpl implements WarehouseDao{
 		return (Warehouse) getSession().get(Warehouse.class, id);
 	}
 
-
 	@Override
 	public void delete(int id) {
 		String hql = "delete from Warehouse w where w.id = ?";
 		Query query = getSession().createQuery(hql);
 		query.setInteger(0, id);
 		query.executeUpdate();
+	}
+
+	@Override
+	public Warehouse getByWarehouseCode(String warehouseCode) {
+		return (Warehouse) getSession().createCriteria(Warehouse.class)
+				.add(Restrictions.eq("warehouseCode", warehouseCode))
+				.uniqueResult();
+	}
+
+	@Override
+	public String getNameByWarehouseCode(String warehouseCode) {
+		String hql = "select warehouseName from Warehouse where warehouseCode = ?";
+		Query query = getSession().createQuery(hql);
+		query.setString(0, warehouseCode);
+		return (String) query.uniqueResult();
 	}
 }

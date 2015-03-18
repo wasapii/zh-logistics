@@ -41,7 +41,7 @@
 	</div>
 	<div id="context" style="background-color:#EEF2FB;height: 100%">
 		<DIV style="height: 400px">
-		<form action="asnAction!query.action?page.localPage=1"
+		<form action="asnAction!queryAsn.action?page.localPage=1"
 			method="post">
 			<table>
 				<tr>
@@ -69,10 +69,11 @@
 				<td width="15px"><input type="checkbox" id = "checkAll" value="0"/></td>
 				<td width="200px"><b>单据编号</b></td>
 				<td width="200px"><b>日期</b></td>
-				<td width="200px"><b>制单时间</b></td>
 				<td width="500px"><b>单据类型</b></td>
-				<td width="150px"><b>单位名称</b></td>
-				<td width="150px"><b>职员名称</b></td>
+				<td width="150px"><b>供货单位</b></td>
+				<td width="200px"><b>仓库信息</b></td>
+				<td width="150px"><b>操作人</b></td>
+				<td width="200px"><b>制单时间</b></td>
 				<td width="300px"><b>备注</b></td>
 			</tr>
 			<s:iterator value="invoiceList" id="inv">
@@ -80,10 +81,11 @@
 					<td><input type="checkbox" name= "checkbox" value="${inv.id}"/></td>
 					<td >${inv.invoiceNum}</td>
 					<td >${inv.invoiceFormatDate}</td>
-					<td >${inv.invoiceFormatTime}</td>
 					<td >${inv.invoiceTypeName}</td>
-					<td >${inv.company}</td>
+					<td >${inv.companyName}</td>
+					<td >${inv.warehouseName}</td>
 					<td >${inv.operator}</td>
+					<td >${inv.invoiceFormatTime}</td>
 					<td >${inv.memo}</td>
 				</tr>
 			</s:iterator>
