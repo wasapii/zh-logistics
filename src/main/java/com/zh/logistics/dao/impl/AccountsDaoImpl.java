@@ -110,4 +110,13 @@ public class AccountsDaoImpl extends BaseHibernateImpl implements AccountsDao {
 		}
 	}
 
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<String> getAccountCode(String str) {
+		String hql = "select accountsCode from Accounts where accountsCode like ?";
+		Query query = getSession().createQuery(hql);
+		query.setString(0, str + "%");
+		return query.list();
+	}
+
 }

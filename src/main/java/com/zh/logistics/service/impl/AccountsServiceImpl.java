@@ -51,4 +51,9 @@ public class AccountsServiceImpl implements AccountsService{
 	public void setAccountsDao(AccountsDao accountsDao) {
 		this.accountsDao = accountsDao;
 	}
+
+	@Override
+	public List<String> getAccountCode(String str) {
+		return accountsDao.getAccountCode(str);
+	}
 }

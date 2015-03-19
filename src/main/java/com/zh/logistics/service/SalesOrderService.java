@@ -4,9 +4,9 @@ import com.zh.logistics.base.BaseService;
 import com.zh.logistics.entity.Invoice;
 
 /**
- * 进货单service
- * @zhanghao
- * 20150209
+ * 销售入库单
+ * @zhanghao 20150319
  * */
-public interface AsnService extends BaseService<Invoice>{
+public interface SalesOrderService extends BaseService<Invoice>{
+
 }

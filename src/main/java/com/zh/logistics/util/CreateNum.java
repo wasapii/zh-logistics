@@ -35,19 +35,6 @@ public class CreateNum {
 		return asnNum.toString();
 	}
 
-	public static void main(String[] args) {
-		System.out.println(createInvoiceNum("ASN002014031800004",
-				BaseContext.ASN_NUM_CREATE_HEAD));
-
-		System.out.println("ASN0020150207".substring(
-				BaseContext.ASN_NUM_CREATE_HEAD.length(), 13));
-		Date date = new Date();
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMDD");
-		System.out.println(format.format(date));
-		System.out.println("===" + 90000 % 100000);
-		System.out.println(addZeroUtil(0));
-	}
-
 	/**
 	 * 补零工具 限0~99999
 	 * */

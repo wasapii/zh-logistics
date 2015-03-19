@@ -2,6 +2,8 @@ package com.zh.logistics.action;
 
 import java.util.List;
 
+import net.sf.json.JSONArray;
+
 import org.apache.log4j.Logger;
 
 import com.zh.logistics.entity.Accounts;
@@ -110,6 +112,16 @@ public class AccountsAction extends BaseAction {
 		}
 	}
 
+	/**
+	 * 模糊查询
+	 * */
+	public String getAccountCode(){
+		List<String> codeList = accountsService.getAccountCode(id);
+		JSONArray jsonArray = JSONArray.fromObject(codeList);
+		message = jsonArray.toString();
+		return SUCCESS;
+	}
+	
 	public AccountsService getAccountsService() {
 		return accountsService;
 	}

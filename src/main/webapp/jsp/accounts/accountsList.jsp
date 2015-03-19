@@ -17,8 +17,48 @@
 <script type="text/javascript" src="<%=basePath %>layer/layer.min.js"></script>
 <script type="text/javascript" src="<%=basePath %>js/ui.js"></script>
 <script type="text/javascript" src="<%=basePath %>js/accountsList.js"></script>
-</head>
+<script type="text/javascript">
+	$().ready(function() {
+		$("input[type=text]").keyup(function() {
+			var id = $(this).val();
+			$.post("accountsJson!getAccountCode.action", {id : id}, function(data) {
+				var codeList = eval("(" + data + ")");
+				var contents=""; 
+				$.each(codeList,function(idx,obj){
+					contents=contents+"<li class='suggest_li"+(idx+1)+"'>"+obj+"</li>"; 
+				}); 
+				/* for(var i=0;i<codeList.length;i++){ 
+					var keywords = res[i].keywords; 
+					contents=contents+"<li onclick='onChangehoverLi(this);' class='suggest_li"+(i+1)+"'>"+keywords+"</li>"; 
+				} */
+				$("#suggest_ul").html(contents);
+			});
+		});
+	});
 
+</script>
+<style> 
+#suggest_ul{ 
+width:100%; 
+max-height:223px; 
+margin:0px; 
+padding:0px; 
+border:1px solid #ccc; 
+background-color:#ffffff; 
+list-style-type:none; 
+} 
+
+
+#suggest_ul li{ 
+padding-left:5px; 
+line-height:22px; 
+font-size:13px; 
+width:100%; 
+height:22px; 
+cursor:default; 
+} 
+</style>
+</head>
 <body>
 	<div style="background-color:#EEF2FB;">
 		<table style="width:100% ;border: 0;">
@@ -55,6 +95,7 @@
 				</tr>
 			</table>
 		</form>
+		<ul id="suggest_ul"></ul>
 		<button  id = "updateAccounts" name = "updateAccounts">修改</button>
 		<button  id = "delete" name = "delete">删除</button>
 		<a href="<%=basePath %>jsp/accounts/addAccounts.jsp">新增</a>

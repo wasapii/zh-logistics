@@ -11,4 +11,12 @@
 			<result name="update">/jsp/accounts/updateAccounts.jsp</result>
 		</action>
 	</package>
+	
+	<package name="accountsJson" extends="json-default">
+		<action name="accountsJson" class="com.zh.logistics.action.AccountsAction">
+		<result type="json">
+			<param name="root">message</param>
+		</result>
+		</action>
+	</package>
 </struts>

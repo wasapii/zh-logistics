@@ -5,5 +5,5 @@ import com.zh.logistics.entity.Invoice;
 
 public interface InvoiceDao extends BaseDao<Invoice>{
 
-	public String getMaxInvoiceNum();
+	public String getMaxInvoiceNum(String invoiceHead);
 }

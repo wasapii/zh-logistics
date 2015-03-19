@@ -33,7 +33,6 @@ public class AsnServiceTest {
 
 	@Test
 	public void getAsn(){
-		System.out.println(asnService.getMax());
 //		System.out.println("==========="+invoice.getInvoiceDate());
 //		System.err.println("==========="+invoice.getInvoiceFormatDate());
 //		System.out.println("==========="+DataFormat.formatDateToString(invoice.getInvoiceDate()));

@@ -40,7 +40,7 @@ public class AsnServiceImpl implements AsnService{
 	
 	@Override
 	public Invoice save(Invoice invoice) {
-		String num = CreateNum.createInvoiceNum(invoiceDao.getMaxInvoiceNum(), BaseContext.ASN_NUM_CREATE_HEAD);
+		String num = CreateNum.createInvoiceNum(invoiceDao.getMaxInvoiceNum(BaseContext.NUM_CREATE_HEAD_ASN), BaseContext.NUM_CREATE_HEAD_ASN);
 		invoice.setInvoiceNum(num);
 		//验证仓库信息是否存在
 		Warehouse warehouse = warehouseDao.getByWarehouseCode(invoice.getWarehouseCode());
@@ -71,7 +71,7 @@ public class AsnServiceImpl implements AsnService{
 		}
 		//保存单据信息
 		invoice.setInvoiceType(BaseContext.INVOICE_TYPE_ASN);
-		Date date = new Date();
+		Date date = new Date(); 
 		invoice.setInvoiceDate(date);
 		invoice.setInvoiceTime(new Timestamp(date.getTime()));
 		invoice = invoiceDao.save(invoice);
@@ -98,7 +98,6 @@ public class AsnServiceImpl implements AsnService{
 			}
 		}
 		return invoice;
-		
 	}
 
 	@Override
@@ -168,7 +167,4 @@ public class AsnServiceImpl implements AsnService{
 		this.inventoryDao = inventoryDao;
 	}
 	
-	public String getMax(){
-		return invoiceDao.getMaxInvoiceNum();
-	}
 }

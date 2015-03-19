@@ -150,11 +150,12 @@ public class InvoiceDaoImpl extends BaseHibernateImpl implements InvoiceDao {
 	}
 
 	@Override
-	public String getMaxInvoiceNum() {
+	public String getMaxInvoiceNum(String invoiceHead) {
 		try {
-			String hql = "select max(invoiceNum) from Invoice where invoiceNum like 'ASN%'";
+			String hql = "select max(invoiceNum) from Invoice where invoiceNum like ?";
 			Query query = getSession().createQuery(hql);
-			logger.debug("delete successful");
+			query.setString(0, invoiceHead + "%");
+			logger.debug("select successful");
 			return (String) query.uniqueResult();
 		} catch (RuntimeException re) {
 			logger.error("update fail", re);

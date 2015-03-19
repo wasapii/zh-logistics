@@ -12,8 +12,10 @@ public class BaseContext {
 
 	public final static String DEFAULT_CATEGORY = "000000";//默认类别分类
 	
-	public final static String ASN_NUM_CREATE_HEAD = "ASN00";//进货单单号头内容
-	
+	public final static String NUM_CREATE_HEAD_ASN = "ASN00";//进货入库单单号头内容
+
+	public final static String NUM_CREATE_HEAD_SALES = "SALE00";//进货出库单单号头内容
+
 	/**
 	 * 单位类型
 	 * */

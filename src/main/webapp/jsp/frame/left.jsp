@@ -58,10 +58,10 @@ body {
           </tr>
         </table>
         <ul class="MM">
-          <li><a href="<%=basePath%>jsp/asn/asnList.jsp" target="main">进货单</a></li>
-          <li><a href="http://www.mycodes.net" target="main">零售单</a></li>
-          <li><a href="http://www.mycodes.net" target="main">销售单</a></li>
-          <li><a href="<%=basePath%>jsp/asnRma/asnRmaList.jsp" target="main">退货单</a></li>
+          <li><a href="<%=basePath%>jsp/asn/asnList.jsp" target="main">进货入库单</a></li>
+          <li><a href="<%=basePath%>jsp/sales/salesOrderList.jsp" target="main">销售出库单</a></li>
+          <li><a href="http://www.mycodes.net" target="main">零售出库单</a></li>
+          <li><a href="<%=basePath%>jsp/asnRma/asnRmaList.jsp" target="main">退货出库单</a></li>
           <li><a href="http://www.mycodes.net" target="main">收款单</a></li>
           <li><a href="http://www.mycodes.net" target="main">付款单</a></li>
         </ul>
