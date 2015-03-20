@@ -17,47 +17,7 @@
 <script type="text/javascript" src="<%=basePath %>layer/layer.min.js"></script>
 <script type="text/javascript" src="<%=basePath %>js/ui.js"></script>
 <script type="text/javascript" src="<%=basePath %>js/accountsList.js"></script>
-<script type="text/javascript">
-	$().ready(function() {
-		$("input[type=text]").keyup(function() {
-			var id = $(this).val();
-			$.post("accountsJson!getAccountCode.action", {id : id}, function(data) {
-				var codeList = eval("(" + data + ")");
-				var contents=""; 
-				$.each(codeList,function(idx,obj){
-					contents=contents+"<li class='suggest_li"+(idx+1)+"'>"+obj+"</li>"; 
-				}); 
-				/* for(var i=0;i<codeList.length;i++){ 
-					var keywords = res[i].keywords; 
-					contents=contents+"<li onclick='onChangehoverLi(this);' class='suggest_li"+(i+1)+"'>"+keywords+"</li>"; 
-				} */
-				$("#suggest_ul").html(contents);
-			});
-		});
-	});
-
-</script>
-<style> 
-#suggest_ul{ 
-width:100%; 
-max-height:223px; 
-margin:0px; 
-padding:0px; 
-border:1px solid #ccc; 
-background-color:#ffffff; 
-list-style-type:none; 
-} 
-
-
-#suggest_ul li{ 
-padding-left:5px; 
-line-height:22px; 
-font-size:13px; 
-width:100%; 
-height:22px; 
-cursor:default; 
-} 
-</style>
+<script type="text/javascript" src="<%=basePath %>js/ui_search.js"></script>
 </head>
 <body>
 	<div style="background-color:#EEF2FB;">
@@ -84,18 +44,18 @@ cursor:default;
 				<tr>
 					<td>账户编号 ：</td>
 					<td>
-						<input type = "text" name = "accounts.accountsCode"/>
+						<input type = "text" id="content" src="accountsJson!getAccountCode.action" name = "accounts.accountsCode"/>
+						<div id="auto"></div>
 					</td>
 					<td>账户名称 ：</td>
 					<td>
-						<input type = "text" name = "accounts.accountsName"/>
+						<input type = "text" id="content" src="accountsJson!getAccountName.action" name = "accounts.accountsName"/>
 					</td>  
 					<td><input type="submit" class="button" id="submit" value="查询">
 					</td>
 				</tr>
 			</table>
 		</form>
-		<ul id="suggest_ul"></ul>
 		<button  id = "updateAccounts" name = "updateAccounts">修改</button>
 		<button  id = "delete" name = "delete">删除</button>
 		<a href="<%=basePath %>jsp/accounts/addAccounts.jsp">新增</a>
